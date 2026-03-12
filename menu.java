@@ -7,7 +7,7 @@ public class menu {
         Metodos m = new Metodos();
         Stack<Integer> pila = new Stack<>();
         boolean seguir = true;
-        int opt = 0;
+        int opt = 0, numero = 0;
         while (seguir) {
             System.out.println("Bienvenido a la segunda unidad de nacho lee");
             System.out.println("donde mi mamá me mima es más dificil");
@@ -20,16 +20,17 @@ public class menu {
             opt = m.ValidarEntero(sc);
             switch (opt) {
                 case 1:
-                    pila = m.llenarPila();
+                    pila = m.llenarPila(pila);
                     break;
                 case 2:
                     m.Mostrar(pila);
                     break;
                 case 3:
-                    System.out.println("Pagina en mantenimiento");
+                    numero = m.Pedirdato(1);
+                    pila = m.ModificarPila(pila, numero);
                     break;
                 case 4:
-                    System.out.println("Pagina en mantenimiento");
+                    numero = m.Pedirdato(3);
                     break;
                 case 5:
                     System.out.println("Gracias por venir ");
