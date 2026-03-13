@@ -1,7 +1,9 @@
+
 import java.util.Scanner;
 import java.util.Stack;
 
 public class Metodos {
+
     Scanner sc = new Scanner(System.in);
 
     public int ValidarEntero(Scanner sc) {
@@ -46,8 +48,33 @@ public class Metodos {
         return p;
     }
 
+    public Stack<obj> llenarPilaO(Stack<obj> po) {
+        Metodos m = new Metodos();
+        boolean bandera = true;
+        int opt = 0;
+        while (bandera) {
+            obj o = new obj();
+            System.out.println("Ingrese el numero");
+            o.setDato(m.ValidarEntero(sc));
+            po.push(o);
+            System.out.println("Desea ingresar mas registros 1) si , 2) no");
+            opt = m.ValidarEntero(sc);
+            opt = m.ValidarRango(1, 2, opt);
+            if (opt == 2) {
+                bandera = false;
+            }
+        }
+        return po;
+    }
+
     public void Mostrar(Stack<Integer> p) {
         System.out.println(p);
+    }
+
+    public void MostrarO(Stack<obj> po) {
+        for (obj o : po) {
+            System.out.print(o.getDato());
+        }
     }
 
     public int Pedirdato(int opt) {
@@ -88,4 +115,47 @@ public class Metodos {
         }
         return p;
     }
-};
+
+    public Stack<Integer> ModificarPilaNuevoMetodo(Stack<Integer> p, int numero) {
+        Metodos m = new Metodos();
+        for (int index = 0; index < p.size(); index++) {
+            if (p.get(index).equals(numero)) {
+                int num = m.Pedirdato(2);
+                p.set(index, num);
+            }
+        }
+        return p;
+    }
+
+    public Stack<Integer> Eliminar(Stack<Integer> p, int numero) {
+        Stack<Integer> AuxPila = new Stack<>();
+        int n = p.size();
+        for (int i = 0; i < n; i++) {
+            if (p.peek().equals(numero)) {
+                p.pop();
+            } else {
+                AuxPila.push(p.pop());
+            }
+
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            p.push(AuxPila.pop());
+        }
+        return p;
+    }
+
+    public Stack<Integer> Eliminar2(Stack<Integer> p, int numero) {
+        for (int i = 0; i < p.size(); i++) {
+            if (p.get(i).equals(numero)) {
+                p.remove(i);
+            }
+        }
+        return p;
+    }
+
+    public Stack<Integer> Eliminar3(Stack<Integer> p, int numero) {
+        p.removeIf(obj -> obj == numero);
+        return p;
+    }
+}
