@@ -30,7 +30,8 @@ public class menu {
                     pila = m.ModificarPila(pila, numero);
                     break;
                 case 4:
-                    numero = m.Pedirdato(3);
+                    numero = m.Pedirdato(4);
+                    pila = m.Eliminar(pila, numero);
                     break;
                 case 5:
                     System.out.println("Gracias por venir ");

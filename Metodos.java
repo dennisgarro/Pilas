@@ -61,6 +61,10 @@ public class Metodos {
                 System.out.println("Ingrese El nuevo numero Modificado");
                 opt = m.ValidarEntero(sc);
                 break;
+            case 3:
+                System.out.println("Eliminar todos repetidos 1, eliminar solo el primero 2");
+                opt = m.ValidarEntero(sc);
+                break;
 
             default:
                 System.out.println("Ingrese el numero a eliminar");
@@ -88,4 +92,38 @@ public class Metodos {
         }
         return p;
     }
-};
+
+    public Stack<Integer> Eliminar(Stack<Integer> p, int numero) {
+        Stack<Integer> Auxp = new Stack<>();
+        Metodos m  = new Metodos();
+        int opt = m.Pedirdato(3);
+        boolean encontrado = true;
+        if (opt == 1) {
+            while (!p.isEmpty()) {
+                if (p.peek().equals(numero)) {
+                    p.pop();
+                } else {
+                    Auxp.push(p.pop());
+                }
+            }
+        } else {
+
+            while (!p.isEmpty()) {
+                if (p.peek().equals(numero) && encontrado) {
+                    p.pop();
+                    encontrado = false;
+                } else {
+                    Auxp.push(p.pop());
+                }
+
+            }
+
+        }
+
+        while (!Auxp.isEmpty()) {
+            p.push(Auxp.pop());
+        }
+
+        return p;
+    }
+}
