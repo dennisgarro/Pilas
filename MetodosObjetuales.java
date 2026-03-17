@@ -38,13 +38,16 @@ public class MetodosObjetuales {
         return p;
     }
 
+    public Stack<ObjPunto7> Eliminar2(Stack<ObjPunto7> p, int numero) {
+        p.removeIf(o -> o.getDato() == numero);
+        return p;
+    }
+
     public Stack<ObjPunto7> Eliminar(Stack<ObjPunto7> p, int numero) {
-        int i = 0;
-        for (ObjPunto7 o : p) {
-            if (o.getDato() == numero) {
+        for (int i = p.size() - 1; i >= 0; i--) {
+            if (p.get(i).getDato() == numero) {
                 p.remove(i);
             }
-            i++;
         }
         return p;
     }
