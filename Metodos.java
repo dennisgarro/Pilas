@@ -95,7 +95,7 @@ public class Metodos {
 
     public Stack<Integer> Eliminar(Stack<Integer> p, int numero) {
         Stack<Integer> Auxp = new Stack<>();
-        Metodos m  = new Metodos();
+        Metodos m = new Metodos();
         int opt = m.Pedirdato(3);
         boolean encontrado = true;
         if (opt == 1) {
@@ -124,6 +124,20 @@ public class Metodos {
             p.push(Auxp.pop());
         }
 
+        return p;
+    }
+
+    public Stack<Integer> Eliminar1(Stack<Integer> p, int numero) {
+        for (int i = 0; i < p.size(); i++) {
+            if (p.get(i).equals(numero)) {
+                p.remove(i);
+            }
+        }
+        return p;
+    }
+
+    public Stack<Integer> eliminar2(Stack<Integer> p, int numero) {
+        p.removeIf(x -> x.equals(numero));
         return p;
     }
 }
