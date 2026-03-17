@@ -140,4 +140,6 @@ public class Metodos {
         p.removeIf(x -> x.equals(numero));
         return p;
     }
+
+    
 }
