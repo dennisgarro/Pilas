@@ -9,18 +9,11 @@ public class menu {
         Metodos m = new Metodos();
         Stack<Integer> pila = new Stack<>();
         Stack<obj> PilaO = new Stack<>();
+        OpcionesMenu om = new OpcionesMenu();
         boolean seguir = true;
         int opt = 0, numero = 0;
         while (seguir) {
-            System.out.println("Bienvenido a la segunda unidad de nacho lee");
-            System.out.println("donde mi mamá me mima es más dificil");
-            System.out.println("Que desea realizar");
-            System.out.println("1) llenarPila");
-            System.out.println("2) mostrar Pila");
-            System.out.println("3) Modificar Pila");
-            System.out.println("4) eliminar");
-            System.out.println("5) Salir");
-            opt = m.ValidarEntero(sc);
+            opt = om.Menu(sc);
             switch (opt) {
                 case 1:
                     // System.out.println("vamos a llenar la pila de datos primitivos");
