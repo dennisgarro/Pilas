@@ -73,8 +73,9 @@ public class Metodos {
 
     public void MostrarO(Stack<obj> po) {
         for (obj o : po) {
-            System.out.print(o.getDato());
+            System.out.print(" - "+ o.getDato());
         }
+        System.out.println();
     }
 
     public int Pedirdato(int opt) {
@@ -156,6 +157,36 @@ public class Metodos {
 
     public Stack<Integer> Eliminar3(Stack<Integer> p, int numero) {
         p.removeIf(obj -> obj == numero);
+        return p;
+    }
+
+    public Stack<obj> ModificarPilaObj(Stack<obj> p, int numero) {
+        Metodos m = new Metodos();
+        for (obj o : p) {
+            if (o.getDato() == numero) {
+                o.setDato(m.Pedirdato(2));
+            }
+        }
+        return p;
+    }
+
+    public Stack<obj> EliminaObj(Stack<obj> p, int numero) {
+        p.removeIf(c -> c.getDato() == numero);
+        return p;
+    }
+
+    public Stack<obj> EliminaObjViejo(Stack<obj> p, int numero) {
+        Stack<obj> auxp = new Stack<>();
+        while (!p.isEmpty()) {
+            if (p.peek().getDato() == numero) {
+                p.pop();
+            } else {
+                auxp.push(p.pop());
+            }
+        }
+        while (!auxp.isEmpty()) {
+            p.push(auxp.pop());
+        }
         return p;
     }
 }

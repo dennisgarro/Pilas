@@ -23,27 +23,30 @@ public class menu {
             opt = m.ValidarEntero(sc);
             switch (opt) {
                 case 1:
-                    System.out.println("vamos a llenar la pila de datos primitivos");
-                    pila = m.llenarPila(pila);
+                    // System.out.println("vamos a llenar la pila de datos primitivos");
+                    // pila = m.llenarPila(pila);
                     System.out.println("Ahora vamos a llenar la pila Objetual");
                     PilaO = m.llenarPilaO(PilaO);
                     break;
                 case 2:
-                    System.out.println("vamos a Mostrar la pila de datos primitivos");
-                    m.Mostrar(pila);
+                    // System.out.println("vamos a Mostrar la pila de datos primitivos");
+                    // m.Mostrar(pila);
                     System.out.println("Ahora vamos Mostrar la pila Objetual");
                     m.MostrarO(PilaO);
                     break;
                 case 3:
                     numero = m.Pedirdato(1);
-                    pila = m.ModificarPilaNuevoMetodo(pila, numero);
+                    PilaO = m.ModificarPilaObj(PilaO, numero);
+                    // pila = m.ModificarPilaNuevoMetodo(pila, numero);
                     // pila = m.ModificarPila(pila, numero);
                     break;
                 case 4:
                     numero = m.Pedirdato(3);
                     // pila = m.Eliminar(pila, numero);
                     // pila = m.Eliminar2(pila, numero);
-                    pila = m.Eliminar3(pila, numero);
+                    // pila = m.Eliminar3(pila, numero);
+                    // PilaO = m.EliminaObj(PilaO, numero);
+                    PilaO = m.EliminaObjViejo(PilaO, numero);
                     break;
                 case 5:
                     System.out.println("Gracias por venir ");
