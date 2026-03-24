@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -61,6 +63,10 @@ public class Metodos {
                 System.out.println("Ingrese El nuevo numero Modificado");
                 opt = m.ValidarEntero(sc);
                 break;
+            case 3:
+                System.out.println("Eliminar todos repetidos 1, eliminar solo el primero 2");
+                opt = m.ValidarEntero(sc);
+                break;
 
             default:
                 System.out.println("Ingrese el numero a eliminar");
@@ -88,4 +94,125 @@ public class Metodos {
         }
         return p;
     }
-};
+
+    public Stack<Integer> Eliminar(Stack<Integer> p, int numero) {
+        Stack<Integer> Auxp = new Stack<>();
+        Metodos m = new Metodos();
+        int opt = m.Pedirdato(3);
+        boolean encontrado = true;
+        if (opt == 1) {
+            while (!p.isEmpty()) {
+                if (p.peek().equals(numero)) {
+                    p.pop();
+                } else {
+                    Auxp.push(p.pop());
+                }
+            }
+        } else {
+
+            while (!p.isEmpty()) {
+                if (p.peek().equals(numero) && encontrado) {
+                    p.pop();
+                    encontrado = false;
+                } else {
+                    Auxp.push(p.pop());
+                }
+
+            }
+
+        }
+
+        while (!Auxp.isEmpty()) {
+            p.push(Auxp.pop());
+        }
+
+        return p;
+    }
+
+    public Stack<Integer> Eliminar1(Stack<Integer> p, int numero) {
+        for (int i = 0; i < p.size(); i++) {
+            if (p.get(i).equals(numero)) {
+                p.remove(i);
+            }
+        }
+        return p;
+    }
+
+    public Stack<Integer> eliminar2(Stack<Integer> p, int numero) {
+        p.removeIf(x -> x.equals(numero));
+        return p;
+    }
+
+    public Queue<Integer> llenarCola(Queue<Integer> p) {
+        Metodos m = new Metodos();
+        boolean bandera = true;
+        int opt = 0;
+        while (bandera) {
+            System.out.println("Ingrese el numero");
+            p.offer(m.ValidarEntero(sc));
+            System.out.println("Desea ingresar mas registros 1) si , 2) no");
+            opt = m.ValidarEntero(sc);
+            opt = m.ValidarRango(1, 2, opt);
+            if (opt == 2) {
+                bandera = false;
+            }
+        }
+        return p;
+    }
+
+    public void Mostrar(Queue<Integer> c) {
+        System.out.println(c);
+    }
+
+    public Queue<Integer> ModificarCola(Queue<Integer> c, int numero) {
+        Queue<Integer> Auxp = new LinkedList<>();
+        Metodos m = new Metodos();
+        int n = c.size();
+        for (int i = 0; i < n; i++) {
+            if (c.peek().equals(numero)) {
+                c.remove();
+                Auxp.offer(m.Pedirdato(2));
+            } else {
+                Auxp.offer(c.remove());
+            }
+        }
+
+        return Auxp;
+    }
+
+    public Queue<Integer> Eliminar(Queue<Integer> p, int numero) {
+        Queue<Integer> Auxp = new LinkedList<>();
+        Metodos m = new Metodos();
+        int opt = m.Pedirdato(3);
+        boolean encontrado = true;
+        if (opt == 1) {
+            while (!p.isEmpty()) {
+                if (p.peek().equals(numero)) {
+                    p.remove();
+                } else {
+                    Auxp.offer(p.remove());
+                }
+            }
+        } else {
+
+            while (!p.isEmpty()) {
+                if (p.peek().equals(numero) && encontrado) {
+                    p.remove();
+                    encontrado = false;
+                } else {
+                    Auxp.offer(p.remove());
+                }
+
+            }
+
+        }
+
+        return Auxp;
+    }
+
+    public Queue<Integer> eliminar2(Queue<Integer> p, int numero) {
+        p.removeIf(x -> x.equals(numero));
+        return p;
+    }
+
+}
